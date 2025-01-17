@@ -4,6 +4,6 @@ from django.shortcuts import render
 def hello(request):
     return HttpResponse("Hello World!")
 
-def job_details(request):
-    return HttpResponse("This is the job details")
+def job_details(request, id):
+    return HttpResponse(f"This is the job detail page {id}")
 
