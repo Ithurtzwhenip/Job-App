@@ -6,6 +6,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.job_list),
-    path('job/<int:id>', views.job_details)
+    path('', views.job_list, name='job_home'),
+    path('job/<int:id>', views.job_details, name='job_detail'),
 ]
