@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -31,9 +31,11 @@ def job_list(request):
 
 def job_detail(request, id):
     print(type(id))
+    try:
+        if id == 0:
+            return redirect(reverse('job_home'))
+        return_html = f"<h1>{job_title[id]}</h1> <h3>{job_description[id]}</h3>"
 
-    if id == 0:
-        return redirect(reverse('job_home'))
-    return_html = f"<h1>{job_title[id]}</h1> <h3>{job_description[id]}</h3>"
-
-    return HttpResponse(return_html)
+        return HttpResponse(return_html)
+    except:
+        return HttpResponseNotFound("<h1>Job Not Found</h1>")
