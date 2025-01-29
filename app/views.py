@@ -29,7 +29,7 @@ def job_list(request):
     return HttpResponse(list_of_jobs)
 
 
-def job_details(request, id):
+def job_detail(request, id):
     print(type(id))
 
     if id == 0:
