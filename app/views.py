@@ -26,8 +26,8 @@ def hello(request):
     list = ["alpha", "beta"]
     temp = TempClass()
     context = {"name": "Django", "first_list": list,"temp_object": temp}
-    return HttpResponse(template.render(context, request))
-
+    # return HttpResponse(template.render(context, request))
+    return render(request, "app/hello.html", context)
 
 def job_list(request):
     list_of_jobs = "<ul>"
