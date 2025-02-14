@@ -1,12 +1,17 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
-# Create your models here.
 
 class JobPost(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
     salary = models.IntegerField()
+    slug = models.SlugField(null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super(JobPost, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
