@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.template import loader
 
+from app.models import JobPost
+
 job_title = [
     "First Job",
     "Second Job",
@@ -39,8 +41,10 @@ def job_list(request):
     #     list_of_jobs += f"<li><a href='{detail_url}'>{j}</a></li>"
     # list_of_jobs += "</ul>"
     # return HttpResponse(list_of_jobs)
-    context = {"job_title_list": job_title}
+    jobs = JobPost.objects.all()
+    context = {"jobs": jobs}
     return render(request, "app/index.html", context)
+
 
 def job_detail(request, id):
     print(type(id))
