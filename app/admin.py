@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from app.models import JobPost
 
-# Register your models here.
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('__str__','title','salary','date')
 
-admin.site.register(JobPost)
+admin.site.register(JobPost, JobAdmin)
