@@ -2,6 +2,12 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+
+
 class Location(models.Model):
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
@@ -17,7 +23,9 @@ class JobPost(models.Model):
     expiry = models.DateTimeField(null=True)
     salary = models.IntegerField()
     slug = models.SlugField(null=True, max_length=40, unique=True)
-    location = models.OneToOneField(Location, null=True, on_delete=models.CASCADE )
+    location = models.OneToOneField(Location, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE,null=True)
+
 
     def save(self, *args, **kwargs):
         if not self.id:
