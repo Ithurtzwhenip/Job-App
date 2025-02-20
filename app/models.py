@@ -2,6 +2,10 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class Skills(models.Model):
+    name = models.CharField(max_length=100)
+
+
 class Author(models.Model):
     name = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
@@ -24,8 +28,8 @@ class JobPost(models.Model):
     salary = models.IntegerField()
     slug = models.SlugField(null=True, max_length=40, unique=True)
     location = models.OneToOneField(Location, null=True, on_delete=models.CASCADE)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE,null=True)
-
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+    skills = models.ManyToManyField(Skills)
 
     def save(self, *args, **kwargs):
         if not self.id:
