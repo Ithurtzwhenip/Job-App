@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 
-from app.models import JobPost
+from app.models import JobPost, Location, Author, Skills
+
 
 class JobAdmin(admin.ModelAdmin):
     list_display = ('__str__','title','salary','date')
@@ -19,4 +20,7 @@ class JobAdmin(admin.ModelAdmin):
          'fields':(('expiry','salary'),'slug',)
         }),
     )
-admin.site.register(JobPost, JobAdmin)
+admin.site.register(JobPost)
+admin.site.register(Location)
+admin.site.register(Author)
+admin.site.register(Skills)
