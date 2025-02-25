@@ -9,8 +9,10 @@
 </head>
 <body>
       <form method="post">
+          {% csrf_token %}
           {{form}}
-<!--          {% csrf_token %}-->
+          <input type="submit" value="Submit">
+
 <!--          {% if email_error %}-->
 <!--          <p>{{email_error}}</p>-->
 <!--          {% endif %}-->
