@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribe Form</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'subscribe/main.css' %}">
+
 </head>
 <body>
     <h1>Subscribe Form</h1>
@@ -14,13 +15,8 @@
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
-
     </form>
     <button onclick="popup()">Click Me</button>
-<script>
-    function popup() {
-        alert("Alert")
-    }
-</script>
+    <script src="{% static 'subscribe/main.js' %}"></script>
 </body>
 </html>
